@@ -1,0 +1,28 @@
+.loginPage{
+    margin-top: 7rem;
+}
+.registerPage{
+    margin-top:6rem;
+}
+.recoveryPage{
+    margin-top:15rem;
+}
+.resetPasswordPage{
+    margin-top: 10rem;
+}
+
+li.dropdown.user.user-menu {
+    padding: 10px;
+    vertical-align: middle;
+    display: block;
+    font-size: 1.5rem;
+    height: 45px;
+    text-align: center;
+    width: 45px;
+    line-height: 25px;
+    margin: 10px 5px;
+    opacity: 1;
+}
+span.profile.waves-effect.waves-light.rounded.dropdown-toggle {
+
+}
