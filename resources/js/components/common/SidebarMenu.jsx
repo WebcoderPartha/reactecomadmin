@@ -2,7 +2,31 @@ import React, {Component, Fragment} from 'react';
 import {Link, Redirect} from "react-router-dom";
 
 class SidebarMenu extends Component {
+    constructor() {
+        super();
+        this.state = {
+            activeClass: 'sidebarMenuClose'
+        }
+    }
+    activeClass = (e) => {
+        // e.preventDefault();
+        // if (this.state.activeClass === 'sidebarMenuOpen'){
+        //     this.setState({
+        //         activeClass: 'sidebarMenuClose'
+        //     })
+        // }else{
+        //     this.setState({
+        //         activeClass: 'sidebarMenuOpen'
+        //     })
+        // }
 
+        let panel = e.target.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    }
     render() {
         return (
             <Fragment>
@@ -33,18 +57,32 @@ class SidebarMenu extends Component {
                             </li>
 
                             <li className="treeview">
-                                <a href="#">
-                                    <i data-feather="message-circle"></i>
-                                    <span>Application</span>
-                                    <span className="pull-right-container">
-          <i className="fa fa-angle-right pull-right"></i>
-        </span>
+                                <a onClick={this.activeClass} href="#">
+                                    <i className="ti-layout-list-thumb"></i>
+                                    <span>Category</span>
+          {/*                          <span className="pull-right-container">*/}
+          {/*<i className="fa fa-angle-right pull-right"></i>*/}
+        {/*</span>*/}
                                 </a>
-                                <ul className="treeview-menu">
-                                    <li><a href="chat.html"><i className="ti-more"></i>Chat</a></li>
-                                    <li><a href="calendar.html"><i className="ti-more"></i>Calendar</a></li>
+                                <ul className={"treeview-menu "+this.state.activeClass}>
+                                    <li><Link to="/category/new"><i className="ti-more"></i>Add New</Link></li>
+                                    <li><Link to="/category/list"><i className="ti-more"></i>All Category</Link></li>
                                 </ul>
                             </li>
+                            <li className="treeview">
+                                <a href="#" onClick={this.activeClass}>
+                                    <i className="ti-layout-list-thumb"></i>
+                                    <span>Category</span>
+        {/*                            <span className="pull-right-container">*/}
+        {/*  <i className="fa fa-angle-right pull-right"></i>*/}
+        {/*</span>*/}
+                                </a>
+                                <ul className={"treeview-menu "+this.state.activeClass}>
+                                    <li><Link to="/category/new"><i className="ti-more"></i>Add New</Link></li>
+                                    <li><Link to="/category/list"><i className="ti-more"></i>All Category</Link></li>
+                                </ul>
+                            </li>
+
 
 
                             <li>

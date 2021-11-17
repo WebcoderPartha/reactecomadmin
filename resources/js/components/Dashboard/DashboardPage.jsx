@@ -15,7 +15,7 @@ class DashboardPage extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
+                <Header title={"Dashboard"}/>
                 <SidebarMenu />
                 <Dashboard />
                 {this.hasToken()}

@@ -162,7 +162,7 @@ class UserAuthController extends Controller
 
                     }
 
-                    
+
 
                 }else{
                     return Response::json(['message' => 'Confirm password not matched!'], 401);

@@ -35,6 +35,7 @@ class Header extends Component {
     render() {
         return (
             <Fragment>
+                <title>{this.props.title}</title>
                 <header className="main-header">
                     <nav className="navbar navbar-static-top pl-30">
                         <div>

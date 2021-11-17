@@ -383,20 +383,20 @@ throw new Error('template requires jQuery')
     trigger       : '.treeview a'
   }
 
-  var Selector = {
-    tree        : '.tree',
-    treeview    : '.treeview',
-    treeviewMenu: '.treeview-menu',
-    open        : '.menu-open, .active',
-    li          : 'li',
-    data        : '[data-widget="tree"]',
-    active      : '.active'
-  }
-
-  var ClassName = {
-    open: 'menu-open',
-    tree: 'tree'
-  }
+  // var Selector = {
+  //   tree        : '.tree',
+  //   treeview    : '.treeview',
+  //   treeviewMenu: '.treeview-menu',
+  //   open        : '.menu-open, .active',
+  //   li          : 'li',
+  //   data        : '[data-widget="tree"]',
+  //   active      : '.active'
+  // }
+  //
+  // var ClassName = {
+  //   open: 'menu-open',
+  //   tree: 'tree'
+  // }
 
   var Event = {
     collapsed: 'collapsed.tree',
@@ -496,11 +496,11 @@ throw new Error('template requires jQuery')
   }
 
   // Tree Data API
-  $(window).on('load', function () {
-    $(Selector.data).each(function () {
-      Plugin.call($(this))
-    })
-  })
+  // $(window).on('load', function () {
+  //   $(Selector.data).each(function () {
+  //     Plugin.call($(this))
+  //   })
+  // })
 
 }(jQuery) // End of use strict
 
@@ -963,9 +963,9 @@ throw new Error('template requires jQuery')
     if (event) event.preventDefault()
     Plugin.call($(this), 'toggle')
   })
-  
+
   // Slim scrolling
-  
+
   $('.inner-content-div').slimScroll({
     height: '200'
   });
@@ -973,18 +973,18 @@ throw new Error('template requires jQuery')
   $('.sm-scrol').slimScroll({
     height: '250'
   });
-	
+
   $('.direct-chat-messages').slimScroll({
     height: '310'
   });
 
-  
+
   $(".search-box a, .search-box .app-search .srh-btn").on('click', function() {
         $(".app-search").toggle(200);
     });
-	
-	
-	
+
+
+
   // Close
     //
     $(document).on('click', '.box-btn-close', function() {
@@ -1021,22 +1021,22 @@ throw new Error('template requires jQuery')
     $(document).on('click', '.box-btn-fullscreen', function(){
       $(this).parents('.box').toggleClass('box-fullscreen').removeClass('box-maximize');
     });
-	
-		
+
+
 		// Disable demonstrative links!
     //
     $(document).on('click', 'a[href="#"]', function(e){
       e.preventDefault();
     });
-	
-	
+
+
     // This is for the innerleft sidebar
     $(".open-left-block").on('click', function() {
         $('.left-block').toggleClass('open-panel');
         $('.open-left-block').toggleClass('mdi-menu');
     });
-	
-	
+
+
     // Upload
     //
     $(document).on('click', '.file-browser', function() {
@@ -1074,8 +1074,8 @@ throw new Error('template requires jQuery')
       $(this).next('.custom-file-control').attr('data-input-value', filename);
     });
     $('.custom-file-control:not([data-input-value])').attr('data-input-value', 'Choose file...');
-	
-		
+
+
 
 	/* The todo list plugin */
 	  $('.todo-list').todoList({
@@ -1086,8 +1086,8 @@ throw new Error('template requires jQuery')
 		  window.console.log($(this), 'The element has been unchecked');
 		}
 	  });
-	
-	
+
+
 }(jQuery) // End of use strict
 
 // Fullscreen
@@ -1097,7 +1097,7 @@ throw new Error('template requires jQuery')
 			$('[data-provide~="fullscreen"]').on('click', function () {
 				screenfull.toggle($('#container')[0]);
 			});
-		
+
 			$(function () {
 			  $('[data-toggle="tooltip"]').tooltip()
 			})
@@ -1107,14 +1107,14 @@ throw new Error('template requires jQuery')
 
 // feather icon
 	$(function () {
-		'use strict'			
-		feather.replace();		
+		'use strict'
+		feather.replace();
 	}); // End of use strict
 
 
 +function ($) {
   'use strict'
-	
+
 // Dynamic active menu
     var path = window.location.pathname.split("/").pop();
     var target = $('.sidebar-menu li a[href="'+path+'"]');

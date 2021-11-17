@@ -23,6 +23,9 @@ li.dropdown.user.user-menu {
     margin: 10px 5px;
     opacity: 1;
 }
-span.profile.waves-effect.waves-light.rounded.dropdown-toggle {
-
+.sidebarMenuOpen{
+    display: block !important;
+}
+.sidebarMenuClose{
+    display: none;
 }
