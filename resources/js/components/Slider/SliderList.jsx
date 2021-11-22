@@ -1,19 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
 
-class CategoryList extends Component {
+class SliderList extends Component {
     constructor() {
         super();
         this.state = {
-            getCategory: []
+            getSlider: []
         }
     }
 
     componentDidMount() {
-        axios.get('/getallcat').then(response => {
+        axios.get('/getallslider').then(response => {
             if (response.status === 200){
                 this.setState({
-                    getCategory:response.data,
+                    getSlider:response.data,
                 })
             }
         }).catch(error => {
@@ -22,17 +22,17 @@ class CategoryList extends Component {
             }
         });
     }
-    catDelete = (e) => {
+    sliderDelete = (e) => {
         let id = e.target.getAttribute('data-id');
-        const oldCat = this.state.getCategory;
-        const newCat = oldCat.filter(cat => {
-            return cat.id != id;
+        const oldSlider = this.state.getSlider;
+        const newSlider = oldSlider.filter(slider => {
+            return slider.id != id;
         })
-        axios.get('/delcat/'+id).then(response => {
+        axios.get('/delslider/'+id).then(response => {
             if (response.status === 200){
                 Notification.success(response.data.success)
                 this.setState({
-                    getCategory:newCat
+                    getSlider:newSlider
                 });
             }
         }).catch(error => {
@@ -43,19 +43,18 @@ class CategoryList extends Component {
     }
 
     render() {
-        const getcat = this.state.getCategory;
-        if (getcat.length > 0){
-            const myview = getcat.map((category, idx)=> {
+        const getSlider = this.state.getSlider;
+        if (getSlider.length > 0){
+            const myview = getSlider.map((slider, idx)=> {
                 return (
                     <tr key={idx.toString()}>
                         <td>{idx + 1}</td>
-                        <td>{category.category_name}</td>
-                        <td><img src={category.category_image} width={80} alt=""/></td>
+                        <td><img src={slider.slider_image} width={80} alt=""/></td>
                         <td><span className="badge badge-pill badge-success">Published</span>
                         </td>
                         <td>
-                            <Link className="btn btn-info btn-sm" to={"/category/edit/"+category.id}><i className="ti-pencil-alt"></i></Link>&nbsp; &nbsp;
-                            <button data-id={category.id} onClick={this.catDelete} className="btn btn-danger btn-sm"><i className="ti-trash"></i></button>
+                            <Link className="btn btn-info btn-sm" to={"/slider/edit/"+slider.id}><i className="ti-pencil-alt"></i></Link>&nbsp; &nbsp;
+                            <button data-id={slider.id} onClick={this.sliderDelete} className="btn btn-danger btn-sm"><i className="ti-trash"></i></button>
                         </td>
                     </tr>
                 )
@@ -70,9 +69,9 @@ class CategoryList extends Component {
                                     <div className="col-12">
                                         <div className="box">
                                             <div className="box-header with-border">
-                                                <h4 className="box-title">All Category</h4>
+                                                <h4 className="box-title">All Slider</h4>
                                                 <div className="box-controls pull-right">
-                                                    <Link className="btn btn-primary" to="/category/new">Add Category</Link>
+                                                    <Link className="btn btn-primary" to="/slider/add">Add Slider</Link>
                                                 </div>
                                             </div>
                                             <div className={"box-body no-padding "+this.state.mainDiv}>
@@ -81,8 +80,7 @@ class CategoryList extends Component {
                                                         <tbody>
                                                         <tr>
                                                             <th>SL</th>
-                                                            <th>Category Name</th>
-                                                            <th>Image</th>
+                                                            <th>Slider Image</th>
                                                             <th>Status</th>
                                                             <th>Action</th>
                                                         </tr>
@@ -111,12 +109,12 @@ class CategoryList extends Component {
                                             <div className="box-header with-border">
                                                 <h4 className="box-title">All Category</h4>
                                                 <div className="box-controls pull-right">
-                                                    <Link className="btn btn-primary" to="/category/new">Add Category</Link>
+                                                    <Link className="btn btn-primary" to="/slider/add">Add Slider</Link>
                                                 </div>
                                             </div>
                                             <div className="box-body no-padding">
                                                 <div className="table-responsive">
-                                                    <h4>No category found!</h4>
+                                                    <h4 className="text-center">No slider found!</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,4 +129,4 @@ class CategoryList extends Component {
     }
 }
 
-export default CategoryList;
+export default SliderList;

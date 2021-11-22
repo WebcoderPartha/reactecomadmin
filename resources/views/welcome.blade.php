@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/css/placeholder-loading.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
 </head>
 

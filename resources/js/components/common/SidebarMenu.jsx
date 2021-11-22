@@ -55,14 +55,17 @@ class SidebarMenu extends Component {
                                     <span>Dashboard</span>
                                 </Link>
                             </li>
+                            <li>
+                                <Link to="/siteinfo">
+                                    <i data-feather="pie-chart"></i>
+                                    <span>Site Info</span>
+                                </Link>
+                            </li>
 
                             <li className="treeview">
                                 <a onClick={this.activeClass} href="#">
                                     <i className="ti-layout-list-thumb"></i>
                                     <span>Category</span>
-          {/*                          <span className="pull-right-container">*/}
-          {/*<i className="fa fa-angle-right pull-right"></i>*/}
-        {/*</span>*/}
                                 </a>
                                 <ul className={"treeview-menu "+this.state.activeClass}>
                                     <li><Link to="/category/new"><i className="ti-more"></i>Add New</Link></li>
@@ -72,17 +75,24 @@ class SidebarMenu extends Component {
                             <li className="treeview">
                                 <a href="#" onClick={this.activeClass}>
                                     <i className="ti-layout-list-thumb"></i>
-                                    <span>Category</span>
-        {/*                            <span className="pull-right-container">*/}
-        {/*  <i className="fa fa-angle-right pull-right"></i>*/}
-        {/*</span>*/}
+                                    <span>Slider</span>
                                 </a>
                                 <ul className={"treeview-menu "+this.state.activeClass}>
-                                    <li><Link to="/category/new"><i className="ti-more"></i>Add New</Link></li>
-                                    <li><Link to="/category/list"><i className="ti-more"></i>All Category</Link></li>
+                                    <li><Link to="/slider/add"><i className="ti-more"></i>Add New</Link></li>
+                                    <li><Link to="/slider/list"><i className="ti-more"></i>All Slider</Link></li>
                                 </ul>
                             </li>
 
+                            <li className="treeview">
+                                <a href="#" onClick={this.activeClass}>
+                                    <i className="ti-layout-list-thumb"></i>
+                                    <span>Notifications</span>
+                                </a>
+                                <ul className={"treeview-menu "+this.state.activeClass}>
+                                    <li><Link to="/notification/add"><i className="ti-more"></i>Add New</Link></li>
+                                    <li><Link to="/notification/list"><i className="ti-more"></i>All Notification</Link></li>
+                                </ul>
+                            </li>
 
 
                             <li>

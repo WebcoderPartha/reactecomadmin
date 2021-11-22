@@ -29,3 +29,6 @@ li.dropdown.user.user-menu {
 .sidebarMenuClose{
     display: none;
 }
+.ck-editor__editable_inline {
+    min-height: 250px;
+}

@@ -118,7 +118,7 @@ class CategoryController extends Controller
     public function destroyCategory($id){
         $category = Category::where('id', $id)->first();
         $oldImage = $category->category_image;
-        if (file_exists($oldImage)){
+        if (!empty($oldImage)){
 
             unlink(public_path($oldImage));
             $category = Category::where('id', $id)->first();

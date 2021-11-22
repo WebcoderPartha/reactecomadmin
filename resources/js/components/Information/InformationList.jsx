@@ -1,19 +1,20 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
+import parse from 'html-react-parser';
 
-class CategoryList extends Component {
+class InformationList extends Component {
     constructor() {
         super();
         this.state = {
-            getCategory: []
+            notifications: []
         }
     }
 
     componentDidMount() {
-        axios.get('/getallcat').then(response => {
+        axios.get('/getnotification').then(response => {
             if (response.status === 200){
                 this.setState({
-                    getCategory:response.data,
+                    notifications:response.data,
                 })
             }
         }).catch(error => {
@@ -22,17 +23,17 @@ class CategoryList extends Component {
             }
         });
     }
-    catDelete = (e) => {
+    NotiDelete = (e) => {
         let id = e.target.getAttribute('data-id');
-        const oldCat = this.state.getCategory;
-        const newCat = oldCat.filter(cat => {
-            return cat.id != id;
+        const oldNoti = this.state.notifications;
+        const newNoti = oldNoti.filter(noti => {
+            return noti.id != id;
         })
-        axios.get('/delcat/'+id).then(response => {
+        axios.delete('/notidelete/'+id).then(response => {
             if (response.status === 200){
                 Notification.success(response.data.success)
                 this.setState({
-                    getCategory:newCat
+                    notifications:newNoti
                 });
             }
         }).catch(error => {
@@ -43,19 +44,19 @@ class CategoryList extends Component {
     }
 
     render() {
-        const getcat = this.state.getCategory;
-        if (getcat.length > 0){
-            const myview = getcat.map((category, idx)=> {
+        const getNoti = this.state.notifications;
+        if (getNoti.length > 0){
+            const myview = getNoti.map((noti, idx)=> {
                 return (
                     <tr key={idx.toString()}>
                         <td>{idx + 1}</td>
-                        <td>{category.category_name}</td>
-                        <td><img src={category.category_image} width={80} alt=""/></td>
+                        <td>{noti.title}</td>
+                        <td>{parse(noti.description)}</td>
                         <td><span className="badge badge-pill badge-success">Published</span>
                         </td>
                         <td>
-                            <Link className="btn btn-info btn-sm" to={"/category/edit/"+category.id}><i className="ti-pencil-alt"></i></Link>&nbsp; &nbsp;
-                            <button data-id={category.id} onClick={this.catDelete} className="btn btn-danger btn-sm"><i className="ti-trash"></i></button>
+                            <Link className="btn btn-info btn-sm" to={"/notification/edit/"+noti.id}><i className="ti-pencil-alt"></i></Link>&nbsp; &nbsp;
+                            <button type="button" data-id={noti.id} onClick={this.NotiDelete} className="btn btn-danger btn-sm"><i className="ti-trash"></i></button>
                         </td>
                     </tr>
                 )
@@ -70,9 +71,9 @@ class CategoryList extends Component {
                                     <div className="col-12">
                                         <div className="box">
                                             <div className="box-header with-border">
-                                                <h4 className="box-title">All Category</h4>
+                                                <h4 className="box-title">All Notifications</h4>
                                                 <div className="box-controls pull-right">
-                                                    <Link className="btn btn-primary" to="/category/new">Add Category</Link>
+                                                    <Link className="btn btn-primary" to="/notification/add">Add Notification</Link>
                                                 </div>
                                             </div>
                                             <div className={"box-body no-padding "+this.state.mainDiv}>
@@ -81,8 +82,8 @@ class CategoryList extends Component {
                                                         <tbody>
                                                         <tr>
                                                             <th>SL</th>
-                                                            <th>Category Name</th>
-                                                            <th>Image</th>
+                                                            <th>Title</th>
+                                                            <th>Description</th>
                                                             <th>Status</th>
                                                             <th>Action</th>
                                                         </tr>
@@ -109,14 +110,14 @@ class CategoryList extends Component {
                                     <div className="col-12">
                                         <div className="box">
                                             <div className="box-header with-border">
-                                                <h4 className="box-title">All Category</h4>
+                                                <h4 className="box-title">All Notification</h4>
                                                 <div className="box-controls pull-right">
-                                                    <Link className="btn btn-primary" to="/category/new">Add Category</Link>
+                                                    <Link className="btn btn-primary" to="/notification/new">Add Notification</Link>
                                                 </div>
                                             </div>
                                             <div className="box-body no-padding">
                                                 <div className="table-responsive">
-                                                    <h4>No category found!</h4>
+                                                    <h4>No notifications found!</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,4 +132,4 @@ class CategoryList extends Component {
     }
 }
 
-export default CategoryList;
+export default InformationList;
